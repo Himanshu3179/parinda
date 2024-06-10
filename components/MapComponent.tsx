@@ -1,20 +1,22 @@
 "use client"
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
-import React from 'react'
+const containerStyle = {
+  width: '100%',
+  height: '400px'
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
 
 const MapComponent = () => {
-    return (
-        <APIProvider apiKey=''>
-            <Map
-                style={{ width: '100vw', height: '100vh' }}
-                defaultCenter={{ lat: 22.54992, lng: 0 }}
-                defaultZoom={3}
-                gestureHandling={'greedy'}
-                disableDefaultUI={true}
-            />
-        </APIProvider>
-    )
-}
+  return (
+    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10} />
+    </LoadScript>
+  );
+};
 
-export default MapComponent
+export default MapComponent;

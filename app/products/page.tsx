@@ -1,44 +1,38 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
+import { getAllProducts } from '@/app/actions'
+import Link from 'next/link'
 
-const page = () => {
+const page = async () => {
+    const allProducts = await getAllProducts()
+
+
     return (
         <div className='py-10 px-32'>
-            <div className='flex   gap-10'>
-                <div className='w-[60%] bg-neutral-50'>
-                    <Image src="/image.png" alt="Next.js" width={500} height={400} />
-                </div>
-                <div className='flex flex-col gap-4 '>
-                    <p className='text-2xl font-bold'>Product name</p>
-                    <p className='text-muted-foreground'>Subheading</p>
-                    <p className='font-semibold text-xl'>$10.99</p>
-                    <p className='text-muted-foreground font-semibold '>Body text for describing why this product is simply a must-buy</p>
-                    <Button>Add to Cart</Button>
-                    <p className='text-muted-foreground font-semibold text-sm'>Text box for additional details or fine print</p>
-                </div>
-            </div>
+            <p className='text-3xl font-bold'>All Products</p>
             <div className='mt-10'>
-                <p className='text-xl'>Related products</p>
-                <div className='flex mt-5 justify-between'>
-                    <div className='bg-neutral-50 p-5 rounded-lg flex flex-col gap-1'>
-                        <Image src="/crow.png" alt="Next.js" width={300} height={400} />
-                        <p className='font-semibold mt-2'>Product</p>
-                        <p className='text-muted-foreground'>Body text for first product</p>
-                        <p className='font-semibold'>$10.99</p>
-                    </div>
-                    <div className='bg-neutral-50 p-5 rounded-lg flex flex-col gap-1'>
-                        <Image src="/crow.png" alt="Next.js" width={300} height={400} />
-                        <p className='font-semibold mt-2'>Product</p>
-                        <p className='text-muted-foreground'>Body text for first product</p>
-                        <p className='font-semibold'>$10.99</p>
-                    </div>
-                    <div className='bg-neutral-50 p-5 rounded-lg flex flex-col gap-1'>
-                        <Image src="/crow.png" alt="Next.js" width={300} height={400} />
-                        <p className='font-semibold mt-2'>Product</p>
-                        <p className='text-muted-foreground'>Body text for first product</p>
-                        <p className='font-semibold'>$10.99</p>
-                    </div>
+                <div className='
+                    grid grid-cols-1
+                    md:grid-cols-2
+                    lg:grid-cols-3
+                mt-5 
+                gap-5
+                '>
+                    {allProducts.map((product) => (
+                        <Link key={product.id}
+                            href={`/products/${product.id}`}
+                            className='bg-neutral-50 p-5 rounded-lg flex flex-col gap-1
+                            cursor-pointer  
+                        '>
+                            <img src={product.imageUrl} alt={product.productName} width={300} height={400}
+                                className='object-cover w-full h-48 rounded-lg'
+                            />
+                            <p className='font-semibold mt-2'>{product.productName}</p>
+                            <p className='text-muted-foreground'>{product.description}</p>
+                            <p className='font-semibold'>${product.price}</p>
+                        </Link>
+                    ))}
                 </div>
             </div>
         </div>

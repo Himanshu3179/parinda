@@ -1,22 +1,12 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { NextAuthOptions } from "@/lib/authOptions";
 import db from "@/lib/db";
-export async function PUT(req: Request) {
-  const body = await req.json();
+import { getUserEmail } from "@/app/actions";
 
-  const session = await getServerSession(NextAuthOptions);
-
-  if (!session || !session.user) {
-    return NextResponse.redirect("/api/auth/signin");
-  }
-
-  const email = session.user.email;
-
+export async function GET(req: Request) {
+  const email = await getUserEmail();
   if (!email) {
     return NextResponse.json({ message: "error" });
   }
-
   const user = await db.user.findUnique({
     where: {
       email,
@@ -27,14 +17,44 @@ export async function PUT(req: Request) {
     return NextResponse.json({ message: "error" });
   }
 
-  await db.user.update({
-    where: {
-      email,
-    },
-    data: {
-      name: body.name,
-    },
-  });
+  return NextResponse.json(user);
+}
 
-  return NextResponse.json({ message: "success" });
+export async function PUT(req: Request) {
+  try {
+    const email = await getUserEmail();
+    if (!email) {
+      return NextResponse.json(
+        { message: "Not authenticated" },
+        { status: 400 }
+      );
+    }
+    const body = await req.json();
+    const { name, contact, address } = body;
+
+    const user = await db.user.findUnique({
+      where: {
+        email,
+      },
+    });
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
+
+    const updatedUser = await db.user.update({
+      where: {
+        email,
+      },
+      data: {
+        name: name || user.name,
+        contact: contact || user.contact,
+        address: address || user.address,
+      },
+    });
+
+    return NextResponse.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: "An error occurred" }, { status: 500 });
+  }
 }

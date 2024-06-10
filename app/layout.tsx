@@ -20,15 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
+      {/* <head>
+        <script
+          src={`https://maps.googleapis.com/maps/api/js?key=IzaSyA5ea5k0nS1yP7ntISTFU2OxFJi6pRsPSA&libraries=places`}
+          async
+          defer
+        ></script>
+      </head> */}
       <body className={inter.className}>
         <div className="min-h-screen">
           <Navbar />
-          {/* <Header /> */}
           {children}
         </div>
         <Footer />
         <Toaster />
-
       </body>
     </html>
   );

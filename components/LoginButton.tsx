@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { buttonVariants } from '@/components/ui/button'
-import { isAuthenticated } from '@/app/actions'
+import { isAdmin, isAuthenticated } from '@/app/actions'
 import LogoutButton from './LogoutButton';
 import {
     DropdownMenu,
@@ -11,6 +11,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { signOut } from 'next-auth/react';
 
 
 export async function LoginButton() {
@@ -28,6 +29,7 @@ export async function LoginButton() {
             </div>
         )
     }
+    const isadmin = await isAdmin();
     return (
         <div>
             <DropdownMenu>
@@ -40,16 +42,34 @@ export async function LoginButton() {
                 <DropdownMenuContent>
                     <DropdownMenuLabel>{email}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem className='text-red-600'>
-                        Sign Out
-                    </DropdownMenuItem>
-
-                    
-                
+                    <Link
+                        href={'/profile'}
+                    >
+                        <DropdownMenuItem>
+                            Profile
+                        </DropdownMenuItem>
+                    </Link>
+                    {
+                        isadmin && (
+                            <Link
+                                href={'/admin'}
+                            >
+                                <DropdownMenuItem>
+                                    Admin
+                                </DropdownMenuItem>
+                            </Link>
+                        )
+                    }
+                    <Link
+                        href={'/signout'}
+                    >
+                        <DropdownMenuItem className='text-red-600'>
+                            Sign Out
+                        </DropdownMenuItem>
+                    </Link>
                 </DropdownMenuContent>
             </DropdownMenu>
-        </div>
+        </div >
     )
 }
 

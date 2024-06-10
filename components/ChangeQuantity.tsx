@@ -32,6 +32,7 @@ const ChangeQuantity = (
             setTotalItems(totalItems)
         }
         setLoading(false)
+        window.location.reload()
     }
 
     const handleDecrement = async () => {
@@ -59,6 +60,7 @@ const ChangeQuantity = (
             setTotalItems(totalItems)
         }
         setLoading(false)
+        window.location.reload()
     }
 
     return (

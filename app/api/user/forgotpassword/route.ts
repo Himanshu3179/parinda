@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     }
 
     const resetToken = crypto.randomBytes(20).toString("hex");
-    const resetTokenExpires = Date.now() + 3600000; // 1 hour from now
+    const resetTokenExpires = Date.now() + 3600000;
 
     await db.user.update({
       where: { email },

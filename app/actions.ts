@@ -324,13 +324,7 @@ export async function isAllDetailsFilled() {
     if (!user || "error" in user || !("contact" in user)) {
       return false;
     }
-    if (
-      !user.contact ||
-      !user.address ||
-      !user.name ||
-      !user.latitude ||
-      !user.longitude
-    ) {
+    if (!user.contact || !user.address || !user.name) {
       return false;
     }
     return true;

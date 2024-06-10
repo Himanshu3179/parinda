@@ -6,6 +6,7 @@ import { X } from 'lucide-react';
 import RemoveCart from '@/components/RemoveCart';
 import ChangeQuantity from '@/components/ChangeQuantity';
 import CheckOutButton from '@/components/CheckOutButton';
+import { buttonVariants } from '@/components/ui/button';
 
 interface CartProps {
     items: {
@@ -26,11 +27,18 @@ interface CartProps {
 
 const Cart = async () => {
     const cartItems = await getCart();
+    if (!cartItems || !cartItems.items || cartItems.items.length === 0) {
 
-    if (!cartItems || !cartItems.items) {
-        return <p>Cart is empty</p>;
+        return (
+            <div className='px-10 py-10 '>
+                <h2 className="text-2xl font-bold mb-4">Cart</h2>
+                <p>Cart is empty</p>
+                <Link href="/products" className={`mt-5 ${buttonVariants({ variant: 'default' })}`}>
+                    Shop Here
+                </Link>
+            </div>
+        )
     }
-
     return (
         <div className='px-10 py-10 '>
             <h2 className="text-2xl font-bold mb-4">Cart</h2>

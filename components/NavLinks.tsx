@@ -52,11 +52,11 @@ const NavLinks = () => {
                 <ShoppingCart size={24}
                     fill={pathname === '/cart' ? 'black' : 'none'}
                 />
-                {/* <sup
+                <sup
                     className='bg-red-500 text-white rounded-full w-4 h-4 flex justify-center items-center'
                 >
                     {totalItems}
-                </sup> */}
+                </sup>
             </Link>
 
         </>

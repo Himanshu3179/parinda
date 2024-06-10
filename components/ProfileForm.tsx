@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from './ui/use-toast';
 import { useRouter } from 'next/navigation';
 import { Textarea } from './ui/textarea';
+import SetLocationButton from './SetLocationButton';
 
 interface User {
     name: string;
@@ -135,6 +136,7 @@ const ProfileForm = () => {
                                 <Input placeholder='Your email' value={userData?.email} readOnly />
                             </FormControl>
                         </FormItem>
+                        <SetLocationButton />
                         <FormItem>
                             <FormLabel>Latitude</FormLabel>
                             <FormControl>

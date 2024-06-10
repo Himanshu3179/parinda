@@ -3,8 +3,8 @@ import React from 'react'
 
 const page = () => {
     return (
-        <div className='flex px-32 gap-40 py-10'>
-            <div className='w-2/3 flex flex-col gap-5'>
+        <div className='flex lg:flex-row md:flex-col flex-col lg:px-32 md:px-20 px-5 py-10 lg:gap-40 gap-10'>
+            <div className='lg:w-2/3  md:w-full text-justify flex flex-col gap-5 '>
                 <p className='font-bold text-5xl'>About</p>
                 <p className='text-muted-foreground'>Subheading for description or instructions</p>
                 <p className='font-semibold'>Body text for your whole article or post. We’ll put in some lorem
@@ -19,7 +19,12 @@ const page = () => {
                     officia Helsinki excepteur Basset hound. Zürich sleepy perfect
                     consectetur.</p>
             </div>
-            <div>
+            <div
+                className='
+                
+                flex justify-center items-center
+                '
+            >
                 <Image src="/About.png" alt="Next.js" width={500} height={400} />
             </div>
         </div>

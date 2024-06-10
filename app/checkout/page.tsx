@@ -14,7 +14,10 @@ const Checkout = async () => {
     }, 0);
 
     return (
-        <div className='px-10 pb-10'>
+        <div className='md:px-10 
+        py-10
+            px-5
+        pb-10'>
             <h2 className="text-2xl font-bold mb-4">Checkout</h2>
             <div className='grid grid-cols-1 gap-5'>
                 {cartItems.items.map((item) => (

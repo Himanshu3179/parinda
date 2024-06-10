@@ -8,7 +8,7 @@ const page = async () => {
         redirect('/')
     }
     return (
-        <div className='py-10'>
+        <div className='py-10 '>
             <AdminOrderHistory />
         </div>
     )

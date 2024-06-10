@@ -8,7 +8,8 @@ const page = async () => {
         redirect('/')
     }
     return (
-        <div className='py-10'>
+        <div className='py-10 w-full'>
+            <p className='text-3xl font-bold mx-auto w-fit mb-10'>Add Products</p>
             <AddProductsForm />
         </div>
     )

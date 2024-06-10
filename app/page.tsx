@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='px-10 py-10 p flex flex-col gap-3'>
+    <div className='lg:px-10 py-10 px-5 flex flex-col gap-3'>
       <p>Users from different parts of the country </p>
       {latitude && longitude ? (
         <Map latitude={latitude} longitude={longitude} markers={markers} />

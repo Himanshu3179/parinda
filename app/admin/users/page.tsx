@@ -11,7 +11,7 @@ const page = async () => {
     const users = await getAllUsers()
     const allProducts = await getAllProducts()
     return (
-        <div className='py-10'>
+        <div className='py-10 px-5 md:px-10'>
             <UsersTable
                 users={users}
             />

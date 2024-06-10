@@ -6,27 +6,29 @@ const Footer = () => {
         {
             name: 'Facebook',
             link: 'https://www.facebook.com',
-            icon: <Facebook size={20} color="blue"/>
+            icon: <Facebook size={20} color="blue" />
         },
         {
             name: 'Instagram',
             link: 'https://www.instagram.com',
-            icon: <Instagram size={20} color="HotPink"/>
+            icon: <Instagram size={20} color="HotPink" />
         },
         {
             name: 'LinkedIn',
             link: 'https://www.linkedin.com',
-            icon: <Linkedin size={20} color="navy"/>
+            icon: <Linkedin size={20} color="navy" />
         },
         {
             name: 'Youtube',
             link: 'https://www.youtube.com',
-            icon: <Youtube size={20} color="red"/>
+            icon: <Youtube size={20} color="red" />
         },
     ]
     return (
-        <div className="flex bg-neutral-100  justify-between px-40 py-10">
-            <div className="flex flex-col justify-evenly">
+        <div className="flex flex-col md:flex-row bg-neutral-100 justify-between px-4 md:px-10 py-4 md:py-10">
+            <div className="flex flex-col justify-between md:justify-evenly
+            items-center gap-5 md:gap-0 md:flex-row w-full md:w-1/3
+                ">
                 <div>
                     Site Name
                 </div>
@@ -41,7 +43,9 @@ const Footer = () => {
                     ))}
                 </div>
             </div>
-            <div>
+            <div
+                className="mt-10 md:mt-0"
+            >
                 <table>
                     <thead className="">
                         <tr>

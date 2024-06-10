@@ -18,15 +18,34 @@ const page = async (
 
 
     return (
-        <div className='py-10 px-32'>
-            <div className='flex gap-10'>
-                <div className='w-[60%] bg-neutral-50'>
+        <div className='
+        py-10 
+        xl:px-32
+        lg:px-20
+        md:px-20
+        px-10
+        '>
+            <div className='flex 
+            flex-col
+            md:flex-row
+            md:gap-10
+            gap-1
+            
+            '>
+                <div className='
+                lg:w-[60%]
+                w-full
+                h-fit
+                '>
                     <img src={mainProduct.imageUrl} alt={mainProduct.productName} width={500} height={400}
                         className='object-cover w-full h-full rounded-lg'
                     />
 
                 </div>
-                <div className='flex flex-col gap-4 bg-neutral-100 max-w-[40%] w-full p-5 h-fit rounded-xl'>
+                <div className='flex flex-col gap-4 bg-neutral-100 
+                lg:max-w-[40%] 
+                w-full 
+                p-5 h-fit rounded-xl'>
                     <p className='text-2xl font-bold'>{mainProduct?.productName}</p>
                     <p className='text-muted-foreground'>{mainProduct?.subHeading}</p>
                     <p className='font-semibold text-xl'>${mainProduct?.price}</p>

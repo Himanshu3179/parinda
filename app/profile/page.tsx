@@ -4,7 +4,10 @@ const page = () => {
 
 
     return (
-        <div className='px-20 py-10 flex flex-col w-full gap-5'>
+        <div className='
+        lg:px-20 
+        px-5
+        py-10 flex flex-col w-full gap-5'>
             <ProfileForm />
         </div>
     )

@@ -1,15 +1,17 @@
-import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 import React from 'react'
 import { getAllProducts } from '@/app/actions'
 import Link from 'next/link'
-
 const page = async () => {
     const allProducts = await getAllProducts()
-
-
     return (
-        <div className='py-10 px-32'>
+        <div className='
+        py-10 
+        xl:px-32
+        lg:px-20
+        md:px-20
+        px-10
+        
+        '>
             <p className='text-3xl font-bold'>All Products</p>
             <div className='mt-10'>
                 <div className='

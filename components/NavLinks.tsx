@@ -38,11 +38,10 @@ const NavLinks = () => {
             setTotalItems(data.total)
         }
         fetchTotalCartItems()
-
     }, [])
 
     return (
-        <>
+        <div className='lg:flex gap-5 items-center hidden '>
             {Navlinks.map((link, index) => (
                 <Link key={index} href={link.link}
                     className={`text-lg ${pathname === link.link ? 'font-semibold underline' : ''}`}
@@ -59,7 +58,7 @@ const NavLinks = () => {
                 </sup>
             </Link>
 
-        </>
+        </div>
     )
 }
 

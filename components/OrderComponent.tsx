@@ -51,7 +51,9 @@ const OrderHistory = () => {
   };
 
   return (
-    <div className="px-10 pb-10">
+    <div className="lg:px-10
+      px-5
+    pb-10">
       <h1 className="text-2xl font-bold mb-4">Order History</h1>
       {loading ? (
         <p className="text-center">Fetching Orders...</p>
